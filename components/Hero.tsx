@@ -13,7 +13,7 @@ function Hero() {
         <p className="hero__subtitle">Streamline your car rental with our effortless booking process.</p>
 
         <CustomButton
-          text={" our cars"}
+          text={" Explore our cars"}
           
         />
 
