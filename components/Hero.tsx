@@ -3,11 +3,11 @@ import Image from "next/image";
 import CustomButton from "./CustomButton";
 
 function Hero() {
-  const handleScroll = (e) => {
+  const handleScroll = (e: any) => {
     e.preventDefault();
   };
   return (
-    <div className="hero">
+    <div className="hero bg-gradient-to-b hero-bg">
       <div className="flex-1 pt-36 padding-x">
         <h1 className="hero__title">
           Find, book or rent a car — quickly and easily!
@@ -18,10 +18,15 @@ function Hero() {
         </p>
 
         <CustomButton
-          text={" Explore cars"}
-          ContainerStyle={"bg-primary-blue text-white rounded-full mt-10"}
+          title={" Explore cars"}
+          containerStyle={"bg-primary-blue text-white rounded-full mt-10"}
           handleClick={handleScroll}
         />
+      </div>
+      <div className="hero__image-container">
+        <div className="hero__image">
+          <Image src="/hero.png " fill className="object-contain" alt="hero" />
+        </div>
       </div>
     </div>
   );

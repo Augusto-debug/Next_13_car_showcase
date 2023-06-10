@@ -1,18 +1,25 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
+import { CustomButtonProps } from "@/types";
 
-function CustomButton( {text, ContainerStyle, handleClick} : {text : string, ContainerStyle: string, handleClick:any} ) {
+function CustomButton({
+  title,
+  containerStyle,
+  handleClick,
+}: CustomButtonProps) {
   return (
     <button
       disabled={false}
       type={"button"}
-      className={`${ContainerStyle} p-4`}
+      className={`${containerStyle} custom-btn`}
       // onClick={() => {alert('you clicked me')}}
       onClick={handleClick}
-      > {text} 
+    >
+      {" "}
+      {title}
     </button>
-  )
+  );
 }
 
-export default CustomButton
+export default CustomButton;
