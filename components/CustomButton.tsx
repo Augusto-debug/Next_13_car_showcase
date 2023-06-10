@@ -1,9 +1,16 @@
+"use client"
 
+import Image from "next/image"
 
-function CustomButton( {text} : {text : string} ) {
+function CustomButton( {text, ContainerStyle, handleClick} : {text : string, ContainerStyle: string, handleClick:any} ) {
   return (
-    <button>
-       {text}
+    <button
+      disabled={false}
+      type={"button"}
+      className={`${ContainerStyle} p-4`}
+      // onClick={() => {alert('you clicked me')}}
+      onClick={handleClick}
+      > {text} 
     </button>
   )
 }
