@@ -2,7 +2,7 @@
 
 function CustomButton( {text} : {text : string} ) {
   return (
-    <button className="color">
+    <button>
        {text}
     </button>
   )

@@ -1,10 +1,8 @@
 import Image from "next/image"
-import CustomButton from "./CustomButton"
+import CustomButton from "./CustomButton" 
+
 
 function Hero() {
-
-  const buttons = ['click me', 'second one']
-
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">
@@ -13,14 +11,14 @@ function Hero() {
         </h1>
 
         <p className="hero__subtitle">Streamline your car rental with our effortless booking process.</p>
-        
-        <CustomButton 
-          text="click me"
+
+        <CustomButton
+          text={" our cars"}
+          
         />
 
       </div>
     </div>
-
   )
 }
 
