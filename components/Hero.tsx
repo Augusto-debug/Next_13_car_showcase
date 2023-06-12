@@ -5,6 +5,10 @@ import CustomButton from "./CustomButton";
 function Hero() {
   const handleScroll = (e: any) => {
     e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   return (
     <div className="hero bg-gradient-to-b hero-bg">
@@ -26,6 +30,8 @@ function Hero() {
       <div className="hero__image-container">
         <div className="hero__image">
           <Image src="/hero.png " fill className="object-contain" alt="hero" />
+
+          <div className="hero__image-overlay"></div>
         </div>
       </div>
     </div>
