@@ -1,17 +1,24 @@
-"use client"
-import { Hero, CustomFilter, SearchBar, CarCard } from "@/components";
+"use client";
+import { Hero, CustomFilter, SearchBar, Carcard } from "@/components";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
+export default function Home() {
+  const [cars, setCars] = useState([]);
 
-  const allCars = await fetchCars();
+  useEffect(() => {
+    const fetchCarsData = async () => {
+      const result = await fetchCars();
+      setCars(result);
+    };
+    fetchCarsData();
+  }, []);
 
-  const isDataEmpty = allCars.length < 1 || !Array.isArray(allCars)|| !allCars; 
+  const isDataEmpty = cars.length < 1 || !Array.isArray(cars) || !cars;
+  // console.log(isDataEmpty);
 
-  console.log(allCars);
-  
-
+  console.log(cars);
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -29,20 +36,22 @@ export default async function Home() {
           </div>
         </div>
 
-          {isDataEmpty ? (
-            <div className="home__error-container">
-              <h2 className="text-black text-xl font-bold">Ops, we have no cars.</h2>
+        {isDataEmpty ? (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">
+              Ops, we have no cars.
+            </h2>
+          </div>
+        ) : (
+          <section>
+            <div className="home__cars-wrapper">
+              {cars.map((car) => (
+                <Carcard key={car} car={car} />
+              ))}
             </div>
-          ) : (
-            <section>
-              <div className="home__cars-wrapper">
-                {allCars.map((car) => (
-                  <CarCard key={car} car={car} />
-                ))}
-              </div>
-            </section> 
-          )}
-        </div>
+          </section>
+        )}
+      </div>
     </main>
   );
 }
