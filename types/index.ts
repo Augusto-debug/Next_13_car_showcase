@@ -8,6 +8,7 @@ export interface CustomButtonProps {
   textStyles?: string;
   rightIcon?: string;
   isDisabled?: boolean;
+  onClick?: (event: MouseEvent) => void;
 }
 
 export interface SearchManufacturerProps {

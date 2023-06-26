@@ -10,6 +10,7 @@ function CustomButton({
   btnType,
   textStyles,
   rightIcon,
+  onClick,
 }: CustomButtonProps) {
   return (
     <button

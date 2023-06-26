@@ -32,7 +32,7 @@ const Footer = () => {
                   <Link
                     key={link.title}
                     href={link.url}
-                    className="text-gray-500"
+                    className="text-gray-500 hover:text-gray-700"
                   >
                     {link.title}
                   </Link>
