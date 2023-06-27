@@ -195,7 +195,7 @@
 
 /* START: searchbar styles */
 .searchbar {
-  @apply: flex items-center justify-start max-sm: flex-col w-full relative max-sm:gap-4 max-w-3xl;
+  @apply: flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl;
 }
 
 .searchbar__item {
@@ -203,14 +203,14 @@
 }
 
 .searchbar__input {
-  @apply: w-full h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm: rounded-full outline-none cursor-pointer text-sm;
+  @apply: w-full h-[48px] pl-12 p-4 bg-light-white rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm;
 }
 
 /* END: searchbar styles */
 
 /* START: search manufacturer styles */
 .search-manufacturer {
-  @apply: flex-1 max-sm: w-full flex justify-start items-center;
+  @apply: flex-1 max-sm:w-full flex justify-start items-center;
 }
 
 .search-manufacturer__input {

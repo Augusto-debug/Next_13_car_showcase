@@ -30,8 +30,8 @@ export default function Home() {
           <SearchBar />
 
           <div className="home__filter-container">
-            <CustomFilter title=" Custom Filter" />
-            <CustomFilter title="Custom Filter" />
+            <CustomFilter title="" />
+            <CustomFilter title="" />
           </div>
         </div>
 

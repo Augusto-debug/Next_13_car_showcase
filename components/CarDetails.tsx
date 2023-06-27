@@ -47,7 +47,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     p-2 bg-primary-blue-100 rounded-full"
                   >
                     <Image
-                      src={generateCarImageUrl(car, "angle")}
+                      src="/close.svg"
                       alt="close"
                       width={20}
                       height={20}
@@ -60,7 +60,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     bg-center rounded-lg"
                     >
                       <Image
-                        src={generateCarImageUrl(car, "angle")}
+                        src={generateCarImageUrl(car)}
                         alt="car model"
                         fill
                         priority
@@ -70,7 +70,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     <div className="flex gap-3 ">
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "angle")}
+                          src={generateCarImageUrl(car, "29")}
                           alt="car model"
                           fill
                           priority
@@ -79,7 +79,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "angle")}
+                          src={generateCarImageUrl(car, "33")}
                           alt="car model"
                           fill
                           priority
@@ -88,7 +88,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "angle")}
+                          src={generateCarImageUrl(car, "13")}
                           alt="car model"
                           fill
                           priority
