@@ -16,9 +16,8 @@ export default function Home() {
   }, []);
 
   const isDataEmpty = cars.length < 1 || !Array.isArray(cars) || !cars;
-  // console.log(isDataEmpty);
 
-  console.log(cars);
+  // console.log(cars);
   return (
     <main className="overflow-hidden">
       <Hero />
