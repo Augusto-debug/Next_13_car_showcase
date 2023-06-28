@@ -6,7 +6,7 @@ import { fetchCars } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Home({ searchParams }) {
+export default function Home({ searchParams }: any) {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
