@@ -1,15 +1,23 @@
 "use client";
 import { Hero, CustomFilter, SearchBar, Carcard } from "@/components";
+import { fuels, manufacturers, yearsOfProduction } from "@/constants";
+import { FilterProps } from "@/types";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Home() {
+export default function Home({ searchParams }) {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
     const fetchCarsData = async () => {
-      const result = await fetchCars();
+      const result = await fetchCars({
+        manufacturer: searchParams.manufacturer || "",
+        model: searchParams.model || "",
+        year: searchParams.year || "2022",
+        fuel: searchParams.fuel || "",
+        limit: searchParams.limit || "10",
+      });
       setCars(result);
     };
     fetchCarsData();
@@ -30,8 +38,8 @@ export default function Home() {
           <SearchBar />
 
           <div className="home__filter-container">
-            <CustomFilter title="" />
-            <CustomFilter title="" />
+            <CustomFilter title="Fuel" options={fuels} />
+            <CustomFilter title="Year" options={yearsOfProduction} />
           </div>
         </div>
 
