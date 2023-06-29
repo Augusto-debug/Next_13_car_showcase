@@ -6,9 +6,11 @@ import { fetchCars } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Home({ searchParams }: any) {
-  const [cars, setCars] = useState([]);
 
+export default function Home({ searchParams }) {
+  
+  const [cars, setCars] = useState([]);
+  
   useEffect(() => {
     const fetchCarsData = async () => {
       const result = await fetchCars({
