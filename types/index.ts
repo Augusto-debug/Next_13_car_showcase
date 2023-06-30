@@ -50,5 +50,5 @@ export interface CustomFilterProps {
 }
 
 export interface HomeProps {
-  searchParams: any,
+  searchParams: FilterProps,
 }

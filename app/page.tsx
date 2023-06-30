@@ -1,13 +1,13 @@
 "use client";
 import { Hero, CustomFilter, SearchBar, Carcard } from "@/components";
 import { fuels, manufacturers, yearsOfProduction } from "@/constants";
-import { FilterProps } from "@/types";
+import { FilterProps, HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
-export default function Home({ searchParams }) {
+export default function Home({ searchParams }:HomeProps) {
   
   const [cars, setCars] = useState([]);
   
@@ -16,9 +16,9 @@ export default function Home({ searchParams }) {
       const result = await fetchCars({
         manufacturer: searchParams.manufacturer || "",
         model: searchParams.model || "",
-        year: searchParams.year || "2022",
+        year: searchParams.year || 2022,
         fuel: searchParams.fuel || "",
-        limit: searchParams.limit || "10",
+        limit: searchParams.limit || 10,
       });
       setCars(result);
     };
