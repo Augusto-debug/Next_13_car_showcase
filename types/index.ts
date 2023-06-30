@@ -37,6 +37,7 @@ export interface FilterProps {
   year: number;
   fuel: string;
   limit: number;
+  pageNumber?: number;
 }
 
 export interface OptionProps {
@@ -50,5 +51,10 @@ export interface CustomFilterProps {
 }
 
 export interface HomeProps {
-  searchParams: FilterProps,
+  searchParams: FilterProps;
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
 }

@@ -1,29 +1,41 @@
 "use client";
-import { Hero, CustomFilter, SearchBar, Carcard } from "@/components";
+import { Hero, CustomFilter, SearchBar, Carcard, ShowMore } from "@/components";
 import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 import { FilterProps, HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-
-export default function Home({ searchParams }:HomeProps) {
-  
+export default function Home() {
   const [cars, setCars] = useState([]);
-  
-  useEffect(() => {
-    const fetchCarsData = async () => {
-      const result = await fetchCars({
-        manufacturer: searchParams.manufacturer || "",
-        model: searchParams.model || "",
-        year: searchParams.year || 2022,
-        fuel: searchParams.fuel || "",
-        limit: searchParams.limit || 10,
+  const [loading, setLoading] = useState(false);
+  const [manufacturer, setManufacturer] = useState();
+  const [model, setModel] = useState("");
+  const [year, setYear] = useState(2022);
+  const [fuel, setFuel] = useState("");
+  const [limit, setLimit] = useState(10);
+
+  const getCars = async () => {
+    setLoading(true);
+    try {
+      const allCars = await fetchCars({
+        manufacturer: manufacturer || "",
+        year: year || 2022,
+        fuel: fuel || "",
+        limit: limit || 10,
+        model: model || "",
       });
-      setCars(result);
-    };
-    fetchCarsData();
-  }, []);
+      setCars(allCars);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCars();
+  }, [fuel, year, model, limit, manufacturer]);
 
   const isDataEmpty = cars.length < 1 || !Array.isArray(cars) || !cars;
 
@@ -37,15 +49,19 @@ export default function Home({ searchParams }:HomeProps) {
           <p>Explore the cars you might like</p>
         </div>
         <div className="home__filters ">
-          <SearchBar />
+          <SearchBar setManufacturer={setManufacturer} setModel={setModel} />
 
           <div className="home__filter-container">
-            <CustomFilter title="Fuel" options={fuels} />
-            <CustomFilter title="Year" options={yearsOfProduction} />
+            <CustomFilter title="Fuel" options={fuels} setFilter={setFuel} />
+            <CustomFilter
+              title="Year"
+              options={yearsOfProduction}
+              setFilter={setYear}
+            />
           </div>
         </div>
 
-        {isDataEmpty ? (
+        {cars.length === 0 ? (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">
               Ops, we have no cars.
@@ -58,6 +74,22 @@ export default function Home({ searchParams }:HomeProps) {
                 <Carcard key={car} car={car} />
               ))}
             </div>
+            {loading && (
+              <div className="mt-16 w-full flex-center">
+                <Image
+                  src="/loader.svg"
+                  alt="loader"
+                  width={15}
+                  height={15}
+                  className="object-contain"
+                />
+              </div>
+            )}
+            <ShowMore
+              pageNumber={limit / 10}
+              isNext={limit > cars.length}
+              setLimit={setLimit}
+            />
           </section>
         )}
       </div>

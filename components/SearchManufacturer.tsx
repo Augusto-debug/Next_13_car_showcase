@@ -6,8 +6,8 @@ import { Fragment, useState } from "react";
 import { manufacturers } from "@/constants";
 
 const SearchManufacter = ({
-  manufacturer,
-  setManufacturer,
+  selected,
+  setSelected,
 }: SearchManufacturerProps) => {
   const [query, setQuery] = useState("");
 
@@ -24,7 +24,7 @@ const SearchManufacter = ({
 
   return (
     <div className="flex-1 max-sm:w-full flex justify-start items-center">
-      <Combobox value={manufacturer} onChange={setManufacturer}>
+      <Combobox value={selected} onChange={setSelected}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image

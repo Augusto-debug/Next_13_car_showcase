@@ -6,21 +6,16 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CustomFilterProps } from "@/types";
 import { updateSearchParam } from "@/utils";
 
-const CustomFilter = ({  title, options }: CustomFilterProps) => {
-  const router = useRouter();
+const CustomFilter = ({ title, options, setFilter }: CustomFilterProps) => {
   const [selected, setSelected] = useState(options[0]);
-  const handleUpdateParams = (e: { title: string, value: string }) => {
-    const newPathname = updateSearchParam(title, e.value.toLowerCase())
-    
-    router.push(newPathname)
-  }
+
   return (
     <div className="w-fit">
       <Listbox
         value={selected}
         onChange={(e) => {
-          setSelected(e)
-          handleUpdateParams(e)
+          setSelected(e);
+          setFilter(e.value);
         }}
       >
         <div className="relative w-fit z-10 ">
@@ -43,14 +38,20 @@ const CustomFilter = ({  title, options }: CustomFilterProps) => {
             <Listbox.Options className="custom-filter__options">
               {options.map((option) => (
                 <Listbox.Option
-                key={option.title}
-                value={option}
-                  className={({ active }) => `relative cursor-default select-none py-2 px-4 ${
-                    active ? "bg-primary-blue text-white" : "text-gray-900"
-                  }`}
+                  key={option.title}
+                  value={option}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 px-4 ${
+                      active ? "bg-primary-blue text-white" : "text-gray-900"
+                    }`
+                  }
                 >
                   {({ selected }) => (
-                    <span className={`block truncate ${selected ? "font-medium":"font-normal"}`}>
+                    <span
+                      className={`block truncate ${
+                        selected ? "font-medium" : "font-normal"
+                      }`}
+                    >
                       {option.title}
                     </span>
                   )}
