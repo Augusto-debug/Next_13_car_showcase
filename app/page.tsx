@@ -4,12 +4,13 @@ import { fuels, manufacturers, yearsOfProduction } from "@/constants";
 import { FilterProps, HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
+import { OptionProps } from "@/types";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [manufacturer, setManufacturer] = useState();
+  const [manufacturer, setManufacturer] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState(2022);
   const [fuel, setFuel] = useState("");
@@ -52,11 +53,19 @@ export default function Home() {
           <SearchBar setManufacturer={setManufacturer} setModel={setModel} />
 
           <div className="home__filter-container">
-            <CustomFilter title="Fuel" options={fuels} setFilter={setFuel} />
+            <CustomFilter
+              title="Fuel"
+              options={fuels}
+              setFilterFuel={setFuel}
+              setFilterYear={function (value: SetStateAction<number>): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
             <CustomFilter
               title="Year"
               options={yearsOfProduction}
-              setFilter={setYear}
+              setFilterYear={setYear}
+              setFilterFuel={function (value: SetStateAction<string>): void {}}
             />
           </div>
         </div>
